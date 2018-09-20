@@ -33,17 +33,20 @@ getFileList("lua", curFileList)
 
 oldFileList = []
 if os.path.exists(filepath):
-    file = open(filepath, "r+")
+    file = open(filepath, "r")
     for line in file:
         oldFileList.append(line)
-else:
-    file = open(filepath, "w")
 
 newFileList = []
 for line in curFileList:
     if not (line in oldFileList):
         newFileList.append(line)
 
-wirteRequiresToFile(file, newFileList)
+for line in oldFileList:
+    if line in curFileList:
+        newFileList.append(line)
 
+file.close()
+file = open(filepath, "w")
+wirteRequiresToFile(file, newFileList)
 file.close()

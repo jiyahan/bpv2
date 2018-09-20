@@ -3,24 +3,13 @@ function love.load()
 end
 
 function love.draw()
-    if debug then
-        event.draw:Trigger()
-        love.graphics.print(debuginfo)
-    end
+    event.onDraw:Trigger()
 end
 
 function love.keypressed(key)
-    if key == "escape" then
-        love.event.quit()
-    end
-    if key == "f1" then
-        local b = love.window.getFullscreen()
-        love.window.setFullscreen(not b)
-    end
-    if key == "`" then
-        debug = not debug
-    end
+    event.onKeyPressed:Trigger(key)
 end
 
 function love.update(dt)
+    event.onUpdate:Trigger(dt)
 end

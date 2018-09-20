@@ -1,5 +1,5 @@
 local event = {}
-event.draw = SimpleEvent:New("draw")
+event.onCamDraw = SimpleEvent:New("onCamDraw")
 event.resize = SimpleEvent:New("resize")
 event.onDraw = SimpleEvent:New("onDraw")
 event.onUpdate = SimpleEvent:New("onUpdate")

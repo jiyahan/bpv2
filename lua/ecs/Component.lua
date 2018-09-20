@@ -1,4 +1,4 @@
-local Component = Object:extend()
+local Component = Object:extends()
 
 local function UnregisterEvtHandlerEach(unreg)
     unreg()

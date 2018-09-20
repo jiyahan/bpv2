@@ -1,5 +1,5 @@
 --local StreamMap = require "lua.common.StreamMap"
-local Entity = Object:extend()
+local Entity = Object:extends()
 
 function Entity.create(types)
     local entity = Entity:new()
@@ -27,9 +27,6 @@ function Entity:show()
     end
     self.isEnable = true
     self.components:ForEach(function(cls, com)
-        for k,v in pairs(com) do
-            print(k,v)
-        end
         com:setActive(true)
     end)
 end
@@ -45,10 +42,6 @@ function Entity:hide()
 end
 
 function Entity:addComponent(comCls)
-    print(comCls)
-    for k,v in pairs(comCls) do
-        print(k,v)
-    end
     local com = comCls:new({ entity = self })
     self.components:Put(comCls, com)
     if self.isActive then

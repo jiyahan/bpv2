@@ -1,6 +1,6 @@
 local Object = {}
 
-function Object:extend()
+function Object:extends()
     local instance = {}
     setmetatable(instance, self)
     self.__index = self
