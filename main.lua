@@ -1,34 +1,10 @@
-local function recursiveEnumerate(folder, file_list)
-    local items = love.filesystem.getDirectoryItems(folder)
-    for _, item in ipairs(items) do
-        local file = folder .. '/' .. item
-        local fileinfo = love.filesystem.getInfo(file)
-        if fileinfo then
-            if fileinfo.type == "file" then
-                table.insert(file_list, file)
-            elseif fileinfo.type == "directory" then
-                recursiveEnumerate(file, file_list)
-            end
-        end
-    end
-end
-
-local function requireFiles(files)
-    for _, file in ipairs(files) do
-        local file = file:sub(1, -5)
-        require(file)
-    end
-end
-
 function love.load()
-    local files = {}
-    recursiveEnumerate('lua', files)
-    requireFiles(files)
+    require "autoScript.autoRequires"
 end
 
 function love.draw()
     if debug then
-        love.graphics.clear()
+        event.draw:Trigger()
         love.graphics.print(debuginfo)
     end
 end
@@ -47,5 +23,4 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
-
 end
