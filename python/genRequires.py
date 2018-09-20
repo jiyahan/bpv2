@@ -38,12 +38,13 @@ if os.path.exists(filepath):
         oldFileList.append(line)
 
 newFileList = []
-for line in curFileList:
-    if not (line in oldFileList):
-        newFileList.append(line)
 
 for line in oldFileList:
     if line in curFileList:
+        newFileList.append(line)
+
+for line in curFileList:
+    if not (line in oldFileList):
         newFileList.append(line)
 
 file.close()

@@ -1,3 +1,3 @@
-local world = bump.newWorld(50)
+local world = bump.newWorld(cfg.worldCellSize)
 
 return world
