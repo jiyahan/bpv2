@@ -11,7 +11,7 @@ end
 
 function GameObject:onDisable()
     local entity = self.entity
-    mod.bump.world:remove(entity)
+    world:remove(entity)
 end
 
 return GameObject
