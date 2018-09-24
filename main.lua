@@ -1,6 +1,5 @@
 function love.load()
     require "autoScript.autoRequires"
-    boot.init()
 end
 
 function love.draw()

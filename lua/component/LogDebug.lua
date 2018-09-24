@@ -15,6 +15,4 @@ function LogDebug:onEnable()
     end)
 end
 
-
-
 return LogDebug

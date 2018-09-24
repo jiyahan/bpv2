@@ -34,4 +34,24 @@ function utils.getAxis2()
     return x, y
 end
 
+function utils.assertType(desiredType, value, name)
+    if type(value) ~= desiredType then
+        error(name .. ' must be a ' .. desiredType .. ', but was ' .. tostring(value) .. '(a ' .. type(value) .. ')')
+    end
+end
+
+function utils.assetNotNil(value)
+    if value == nil then
+        error("value should not be nil")
+    end
+end
+
+function utils.copy(t)
+    local newtable = {}
+    for k, v in pairs(t) do
+        newtable[k] = v
+    end
+    return newtable
+end
+
 return utils

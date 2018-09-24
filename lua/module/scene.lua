@@ -1,14 +1,14 @@
 local scene = {}
 
-function scene.create()
-    for x = 1, 100 do
-        for y = 1, 100 do
-            local brick = Entity:new()
-            brick:addComponent(GameObject)
-            brick:addComponent(RenderRect)
-            brick:setData({ x = x * cfg.worldCellSize, y = y * cfg.worldCellSize, w = cfg.worldCellSize, h = cfg.worldCellSize })
-            brick:setActive(true)
-        end
+for x = 1, 10 do
+    for y = 1, 10 do
+        local brick = Entity:new()
+        brick:addComponent(GameObject)
+        brick:addComponent(RenderRect)
+        brick:setData({ name = 'brick', layerMask = layerMask.brick,
+            x = x * cfg.worldCellSize, y = y * cfg.worldCellSize,
+            w = cfg.worldCellSize, h = cfg.worldCellSize })
+        brick:show()
     end
 end
 
