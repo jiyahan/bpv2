@@ -54,6 +54,11 @@ function GameObject:onLateUpdate(dt)
     local actualX, actualY, cols, len = world:move(self.entity, nx, ny, filter)
     entity.x = actualX
     entity.y = actualY
+    for i = 1, len do
+        local col = cols[i]
+        col.item:popEvent("onCollision", { col = col, other = col.other })
+        col.other:popEvent("onCollision", { col = col, other = col.item })
+    end
 end
 
 function GameObject:onDisable()
