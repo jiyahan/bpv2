@@ -1,6 +1,6 @@
 local cfg = {}
 
 cfg.worldCellSize = 50
-cfg.debuginfo=""
+cfg.gravity = 1000
 
 return cfg

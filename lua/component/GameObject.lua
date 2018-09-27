@@ -12,7 +12,7 @@ function GameObject:onEnable()
     local items, len = world:queryRect(entity.x, entity.y, entity.w, entity.h, filter)
 
     if len > 0 then
-        self.oldLayerMask = utils.copy(entity.layerMask)
+        self.oldLayerMask = entity.layerMask
         entity.layerMask = layerMask.trigger
     end
     world:add(entity, entity.x, entity.y, entity.w, entity.h)
@@ -27,12 +27,14 @@ end
 function GameObject:onUpdate(dt)
     if not self.createSuccess then
         local filter = function(other)
-            return layerMask.collideWith(self.oldlayerMask, other.layerMask)
+            return layerMask.collideWith(self.oldLayerMask, other.layerMask)
         end
         local entity = self.entity
         local items, len = world:queryRect(entity.x, entity.y, entity.w, entity.h, filter)
         if len == 0 then
+            debug:setData({ debuginfo = "set back" })
             self.entity.layerMask = self.oldLayerMask
+            self.createSuccess = true
         end
     end
 end
@@ -52,6 +54,11 @@ function GameObject:onLateUpdate(dt)
     local actualX, actualY, cols, len = world:move(self.entity, nx, ny, filter)
     entity.x = actualX
     entity.y = actualY
+    for i = 1, len do
+        local col = cols[i]
+        col.item:popEvent("onCollision", { col = col, other = col.other })
+        col.other:popEvent("onCollision", { col = col, other = col.item })
+    end
 end
 
 function GameObject:onDisable()
