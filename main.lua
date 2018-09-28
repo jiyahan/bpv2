@@ -12,5 +12,6 @@ end
 
 function love.update(dt)
     event.onUpdate:Trigger(dt)
+    event.onAccSysUpdate:Trigger(dt)
     event.onLateUpdate:Trigger(dt)
 end
