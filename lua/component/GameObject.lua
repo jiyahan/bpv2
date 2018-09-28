@@ -44,14 +44,7 @@ function GameObject:onLateUpdate(dt)
     utils.assertType('number', entity.x, entity.name .. ' x')
     utils.assertType('number', entity.x, entity.name .. ' x')
     local nx, ny = entity.nextX or entity.x, entity.nextY or entity.y
-    local filter = function(item, other)
-        if layerMask.collideWith(item.layerMask, other.layerMask) then
-            return "slide"
-        else
-            return "cross"
-        end
-    end
-    local actualX, actualY, cols, len = world:move(self.entity, nx, ny, filter)
+    local actualX, actualY, cols, len = world:move(self.entity, nx, ny, layerMask.filter)
     entity.x = actualX
     entity.y = actualY
     for i = 1, len do

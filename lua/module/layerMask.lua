@@ -26,10 +26,18 @@ end
 function layerMask.getLayer(name)
     local newlm = {}
     local oldlm = layerMask[name]
-    for k,v in pairs(oldlm) do
+    for k, v in pairs(oldlm) do
         newlm[k] = v
     end
     return newlm
+end
+
+function layerMask.filter(item, other)
+    if layerMask.collideWith(item.layerMask, other.layerMask) then
+        return "slide"
+    else
+        return "cross"
+    end
 end
 
 layerMask.trigger = {}

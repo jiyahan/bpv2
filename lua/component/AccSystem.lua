@@ -1,5 +1,5 @@
 local AccSystem = Component:extends()
-local defaultMaxVx, defaultMaxVy = 300, 300
+local defaultMaxVx, defaultMaxVy, defaultMinVy = 300, 450, -300
 
 function AccSystem:onEnable()
     self:reg(event.onLateUpdate, function(dt)
@@ -14,6 +14,7 @@ function AccSystem:onLateUpdate(dt)
     entity.vx = entity.vx or 0
     entity.vy = entity.vy or 0
     local maxVx, maxVy = entity.maxVx or defaultMaxVx, entity.maxVy or defaultMaxVy
+    local minVy = entity.minVy or defaultMinVy
 
     local ax = 0
     for k, v in pairs(entity.axMap) do
@@ -41,8 +42,8 @@ function AccSystem:onLateUpdate(dt)
     end
     if entity.vy > maxVy then
         entity.vy = maxVy
-    elseif entity.vy < -maxVy then
-        entity.vy = -maxVy
+    elseif entity.vy < minVy then
+        entity.vy = minVy
     end
 
     entity.nextX = entity.x + entity.vx * dt
