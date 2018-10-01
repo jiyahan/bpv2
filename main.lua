@@ -17,9 +17,12 @@ function love.update(dt)
     --  => CmdX CmdY
     event.onCmdUpdate:Trigger(dt)
 
-    --  => AxMap AyMap Vi
+    --  => AxMap AyMap v 有些操作有权限在此修改速度，比如二段跳
     event.onPhysicsUpdate:Trigger(dt)
 
-    --  =>Vn x y
+    -- => nextX nextY
+    event.onAccSystemUpdate:Trigger(dt)
+
+    --  =>v x y
     event.onLateUpdate:Trigger(dt)
 end

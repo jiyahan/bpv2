@@ -3,11 +3,11 @@ local defaultMaxVx, defaultMaxVy, defaultMinVy = 300, 450, -300
 
 function AccSystem:onEnable()
     self:reg(event.onLateUpdate, function(dt)
-        self:onLateUpdate(dt)
+        self:onAccSystemUpdate(dt)
     end)
 end
 
-function AccSystem:onLateUpdate(dt)
+function AccSystem:onAccSystemUpdate(dt)
     local entity = self.entity
     entity.axMap = entity.axMap or {}
     entity.ayMap = entity.ayMap or {}

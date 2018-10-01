@@ -48,6 +48,20 @@ function GameObject:onLateUpdate(dt)
     entity.y = actualY
     for i = 1, len do
         local col = cols[i]
+        if col.type == 'slide' then
+            --垂直阻挡
+            if entity.vy > 0 and col.normal.y < 0 then
+                entity.vy = 0
+            elseif entity.vy < 0 and col.normal.y > 0 then
+                entity.vy = 0
+            end
+            -- 水平阻挡
+            if entity.vx > 0 and col.normal.x < 0 then
+                entity.vx = 0
+            elseif entity.vx < 0 and col.normal.x > 0 then
+                entity.vx = 0
+            end
+        end
         col.item:popEvent("onCollision", { col = col, other = col.other })
         col.other:popEvent("onCollision", { col = col, other = col.item })
     end

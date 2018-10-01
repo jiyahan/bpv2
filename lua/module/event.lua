@@ -1,7 +1,7 @@
 local event = {}
 event.onCmdUpdate = SimpleEvent:New("onCmdUpdate")
 event.onPhysicsUpdate = SimpleEvent:New("onPhysicsUpdate")
-event.onNextPosUpdate = SimpleEvent:New("onNextPosUpdate")
+event.onAccSystemUpdate = SimpleEvent:New("onAccSystemUpdate")
 event.onLateUpdate = SimpleEvent:New("onLateUpdate")
 event.onCamDraw = SimpleEvent:New("onCamDraw")
 event.resize = SimpleEvent:New("resize")
