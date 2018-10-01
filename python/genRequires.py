@@ -46,6 +46,7 @@ for line in oldFileList:
 for line in curFileList:
     if not (line in oldFileList):
         newFileList.append(line)
+        print("New:", line)
 
 file.close()
 file = open(filepath, "w")

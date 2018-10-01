@@ -1,4 +1,5 @@
 local event = {}
+event.onInputUpdate = SimpleEvent:New("onUpdate")
 event.onUpdate = SimpleEvent:New("onUpdate")
 event.onAccSysUpdate = SimpleEvent:New("onAccSysUpdate")
 event.onLateUpdate = SimpleEvent:New("onLateUpdate")

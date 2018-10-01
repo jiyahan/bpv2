@@ -11,6 +11,7 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
+    event.onInputUpdate:Trigger(dt)
     event.onUpdate:Trigger(dt)
     event.onAccSysUpdate:Trigger(dt)
     event.onLateUpdate:Trigger(dt)
