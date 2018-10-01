@@ -8,16 +8,19 @@ local maxJumpEnergy, maxJumpTime = 0.1, 2
 local checkY = 1
 local littlehelp = 300
 local umbrellaInitFallSpeed = 100
+local defaultFriction = 150
 
 function PhysicsMove:onEnable()
-    self:reg(event.onUpdate, function(dt)
+    self:reg(event.onPhysicsUpdate, function(dt)
         local entity = self.entity
         local _, _, cols, len = world:check(entity, entity.x, entity.y + checkY, layerMask.filter)
         local isGrounded = false
+        local groundCol = nil
         for i = 1, len do
             local col = cols[i]
             if col.type == "slide" and col.normal.y ~= 0 and entity.y < col.other.y then
                 isGrounded = true
+                groundCol = col
                 break
             end
         end
@@ -127,19 +130,36 @@ function PhysicsMove:onEnable()
             end
         end
 
+
+        entity.axMap = entity.axMap or {}
+        entity.axMap.fraction = entity.axMap.fraction or 0
+        entity.axMap.axis1 = x * ax
+        if isGrounded then
+            local vx = entity.vx or 0
+            -- 地板摩擦力
+            if vx > 1 then
+                entity.axMap.fraction = math.min(entity.axMap.fraction, -(groundCol.other.friction or defaultFriction))
+            elseif vx < -1 then
+                entity.axMap.fraction = math.max(entity.axMap.fraction, groundCol.other.friction or defaultFriction)
+            else
+                entity.axMap.fraction = 0
+                entity.vx = 0
+            end
+        else
+            entity.axMap.fraction = nil
+        end
+
         local s1 = "jumpEngergy:" .. self.jumpEnergy
         local s2 = "jumpTime:" .. self.jumpTime
-        local s3 = "y:" .. y
+        local s3 = "CmdY:" .. y
         local s4 = "axis1:" .. entity.ayMap.axis1
         local s5 = "vy:" .. entity.vy
         local s6 = string.format("released:%s", self.released)
         local s7 = string.format("isGrounded:%s", isGrounded)
-        debug.physicsMove = string.format("physicsMove:\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", s7, s3, s1, s2, s4, s5, s6)
-
-
-        local entity = self.entity
-        entity.axMap = entity.axMap or {}
-        entity.axMap.axis1 = x * ax
+        local s8 = string.format("vx:%s", entity.vx)
+        local s9 = string.format("axMap.fraction:%s", entity.axMap.fraction)
+        debug.physicsMove = string.format("physicsMove:\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",
+            s7, s3, s1, s2, s4, s5, s8, s6, s9)
     end)
 end
 

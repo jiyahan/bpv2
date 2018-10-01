@@ -11,18 +11,15 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
-    -- AIInput => CmdX CmdY
+    --  => CmdX CmdY
     timer.onUpdate(dt)
 
-    -- KeyInput => CmdX CmdY
-    event.onInputUpdate:Trigger(dt)
+    --  => CmdX CmdY
+    event.onCmdUpdate:Trigger(dt)
 
-    --CmdX CmdY => AxMap AyMap v
-    event.onUpdate:Trigger(dt)
+    --  => AxMap AyMap Vi
+    event.onPhysicsUpdate:Trigger(dt)
 
-    -- AxMap AyMap v => nextX nextY
-    event.onAccSysUpdate:Trigger(dt)
-
-    -- nextX nextY =>x y
+    --  =>Vn x y
     event.onLateUpdate:Trigger(dt)
 end

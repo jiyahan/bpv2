@@ -4,7 +4,7 @@
 local WasdCmd = Component:extends()
 
 function WasdCmd:onEnable()
-    self:reg(event.onInputUpdate, function(dt)
+    self:reg(event.onCmdUpdate, function(dt)
         self.entity.cmdX, self.entity.cmdY = utils.getAxis1()
     end)
 end
