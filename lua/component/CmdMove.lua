@@ -1,6 +1,6 @@
-local Axis2SimpMove = Component:extends()
+local CmdMove = Component:extends()
 
-function Axis2SimpMove:onEnable()
+function CmdMove:onEnable()
     self:reg(event.onUpdate, function(dt)
         local entity = self.entity
         entity.x = entity.x or 0
@@ -11,4 +11,4 @@ function Axis2SimpMove:onEnable()
     end)
 end
 
-return Axis2SimpMove
+return CmdMove

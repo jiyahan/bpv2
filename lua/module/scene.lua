@@ -1,7 +1,7 @@
 local scene = {}
 
-for x = 1, 10 do
-    for y = 1, 10 do
+for x = 1, 30 do
+    for y = 1, 3 do
         local brick = Entity:new()
         brick:addComponent(GameObject)
         brick:addComponent(RenderRect)
