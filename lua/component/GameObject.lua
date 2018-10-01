@@ -32,7 +32,6 @@ function GameObject:onUpdate(dt)
         local entity = self.entity
         local items, len = world:queryRect(entity.x, entity.y, entity.w, entity.h, filter)
         if len == 0 then
-            debug:setData({ debuginfo = "set back" })
             self.entity.layerMask = self.oldLayerMask
             self.createSuccess = true
         end

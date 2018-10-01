@@ -134,7 +134,7 @@ function PhysicsMove:onEnable()
         local s5 = "vy:" .. entity.vy
         local s6 = string.format("released:%s", self.released)
         local s7 = string.format("isGrounded:%s", isGrounded)
-        debug.debuginfo = string.format("%s\n%s\n%s\n%s\n%s\n%s\n%s\n", s7, s3, s1, s2, s4, s5, s6)
+        debug.physicsMove = string.format("physicsMove:\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", s7, s3, s1, s2, s4, s5, s6)
 
 
         local entity = self.entity

@@ -6,8 +6,9 @@ enemy:addComponent(Gravity)
 enemy:addComponent(AccSystem)
 enemy:addComponent(GameObject)
 enemy:addComponent(PhysicsMove)
-enemy:addComponent(WasdCmd)
-enemy:setData({ name = "enemy", x = 100, y = -10, w = 30, h = 30 })
+--enemy:addComponent(RandomCmd)
+enemy:addComponent(FollowHeroCmd)
+enemy:setData({ name = "enemy", x = 1500, y = -10, w = 30, h = 30, maxVx = 100 })
 enemy:show()
 
 return enemy

@@ -1,6 +1,6 @@
 local scene = {}
 
-for x = 1, 30 do
+for x = 1, 200 do
     for y = 1, 3 do
         local brick = Entity:new()
         brick:addComponent(GameObject)

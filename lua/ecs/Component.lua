@@ -16,7 +16,7 @@ function Component:setActive(active)
 
         if self.__timer_fixedids then
             for _, id in pairs(self.__timer_fixedids) do
-                mod.Timer.globalTimer:Unschedule(id)
+                timer.globalTimer:Unschedule(id)
             end
             self.__timer_fixedids = nil
         end
@@ -38,7 +38,7 @@ function Component:scheduleTimer(fixid, delay, task, ...)
         id = self.__timer_fixedids[fixid]
     end
 
-    id = mod.Timer.globalTimer:Schedule(id, delay, task, self, ...) --- 这里不用在timer结束的时候清除，是因为这个id是自增的，不考虑回绕
+    id = timer.globalTimer:Schedule(id, delay, task, self, ...) --- 这里不用在timer结束的时候清除，是因为这个id是自增的，不考虑回绕
     self.__timer_fixedids[fixid] = id
 end
 
@@ -50,7 +50,7 @@ function Component:scheduleTimerAtFixedRate(fixid, delay, period, task, ...)
         id = self.__timer_fixedids[fixid]
     end
 
-    id = mod.Timer.globalTimer:ScheduleAtFixedRate(id, delay, period, task, self, ...)
+    id = timer.globalTimer:ScheduleAtFixedRate(id, delay, period, task, self, ...)
     self.__timer_fixedids[fixid] = id
 end
 
@@ -59,7 +59,7 @@ function Component:unscheduleTimer(fixid)
         local id = self.__timer_fixedids[fixid]
         if id then
             self.__timer_fixedids[fixid] = nil
-            mod.Timer.globalTimer:Unschedule(id)
+            timer.globalTimer:Unschedule(id)
         end
     end
 end

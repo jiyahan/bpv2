@@ -9,8 +9,8 @@ function LogDebug:onEnable()
     end)
     self:reg(event.onDraw, function()
         if self.debug then
-            local debuginfo = self.entity.debuginfo or ""
-            love.graphics.print(debuginfo)
+            love.graphics.print(self.entity.physicsMove or "")
+            love.graphics.print(self.entity.followHeroCmd or "ffff", 330)
         end
     end)
 end

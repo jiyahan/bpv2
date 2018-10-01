@@ -54,4 +54,12 @@ function utils.copy(t)
     return newtable
 end
 
+function utils.randomFrom(listTable)
+    local count = #listTable
+    if count > 0 then
+        local idx = math.random(1, count)
+        return listTable[idx]
+    end
+end
+
 return utils

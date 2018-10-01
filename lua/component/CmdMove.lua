@@ -1,7 +1,7 @@
 local CmdMove = Component:extends()
 
 function CmdMove:onEnable()
-    self:reg(event.onUpdate, function(dt)
+    self:reg(event.onAccSysUpdate, function(dt)
         local entity = self.entity
         entity.x = entity.x or 0
         entity.y = entity.y or 0
