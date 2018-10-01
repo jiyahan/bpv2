@@ -8,18 +8,9 @@ function FollowHeroCmd:onEnable()
     self:scheduleTimerAtFixedRate("t1", 0, 2, function()
         local viewWidth = entity.viewWidth or defaulViewWidth
         local viewHeight = entity.viewHeight or defaulViewHeight
-
-        local items, len = world:queryRect(entity.x - viewWidth / 2, entity.y - viewHeight / 2,
-            viewWidth, viewHeight,
-            function(item)
-                return item.layerMask == layerMask.player
-            end)
-        if len > 0 then
-            self.targetEntity = items[1]
-        else
-            self.targetEntity = nil
-        end
-
+        self.targetEntity = utils.findTarget(entity.x, entity.y, viewWidth, viewHeight, function(item)
+            return item.layerMask == layerMask.player
+        end)
         local cmdX = 0
         if self.targetEntity then
             local dis = self.targetEntity.x - entity.x

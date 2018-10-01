@@ -62,4 +62,19 @@ function utils.randomFrom(listTable)
     end
 end
 
+function utils.findTarget(x,y,w,h,filter)
+    utils.assertType('number', x, ' x')
+    utils.assertType('number', y, ' y')
+    utils.assertType('number', w, ' w')
+    utils.assertType('number', h, ' h')
+
+    local items, len = world:queryRect(x - w / 2, y - h / 2,
+        w, h,filter)
+    if len > 0 then
+        return items[1]
+    else
+        return nil
+    end
+end
+
 return utils

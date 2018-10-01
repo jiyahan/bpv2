@@ -8,7 +8,8 @@ local maxJumpEnergy, maxJumpTime = 0.1, 2
 local checkY = 1
 local littlehelp = 300
 local umbrellaInitFallSpeed = 100
-local defaultFriction = 150
+local defaultFriction = 10
+local jumpXSpeed = 100
 
 function PhysicsMove:onEnable()
     self:reg(event.onPhysicsUpdate, function(dt)
@@ -60,6 +61,9 @@ function PhysicsMove:onEnable()
                         self.released = false
                         entity.ayMap.axis1 = -ay
                         entity.vy = 0
+                        if x ~= 0 then
+                            entity.vx = jumpXSpeed * x
+                        end
                     else --没有跳跃次数
                         self.jumpEnergy = 0
                         self.jumpTime = 0
@@ -75,20 +79,18 @@ function PhysicsMove:onEnable()
                         end
                     end
                 end
-            else --没按上
-                if y == 0 then --y方向没按
-                    self.jumpEnergy = 0
-                    self.jumpTime = self.jumpTime
-                    self.released = true
-                    entity.ayMap.axis1 = 0
-                    entity.vy = entity.vy
-                else -- y<0 向下加速，这个可以是技能
-                    self.jumpEnergy = 0
-                    self.jumpTime = self.jumpTime
-                    self.released = true
-                    entity.ayMap.axis1 = ay
-                    entity.vy = entity.vy
-                end
+            elseif y == 0 then --y方向没按
+                self.jumpEnergy = 0
+                self.jumpTime = self.jumpTime
+                self.released = true
+                entity.ayMap.axis1 = 0
+                entity.vy = entity.vy
+            else -- y<0 向下加速，这个可以是技能
+                self.jumpEnergy = 0
+                self.jumpTime = self.jumpTime
+                self.released = true
+                entity.ayMap.axis1 = ay
+                entity.vy = entity.vy
             end
         else -- 在地上
             if y < 0 then --按上
@@ -99,6 +101,9 @@ function PhysicsMove:onEnable()
                         self.released = false
                         entity.ayMap.axis1 = -ay
                         entity.vy = 0
+                        if x ~= 0 then
+                            entity.vx = jumpXSpeed * x
+                        end
                     else
                         self.jumpTime = 0
                         self.jumpEnergy = 0
@@ -137,10 +142,13 @@ function PhysicsMove:onEnable()
         if isGrounded then
             local vx = entity.vx or 0
             -- 地板摩擦力
+            local otherFriction = groundCol.other.friction or defaultFriction
+            local entityFriction = entity.friction or defaultFriction
+            local friction = otherFriction * entityFriction
             if vx > 1 then
-                entity.axMap.fraction = math.min(entity.axMap.fraction, -(groundCol.other.friction or defaultFriction))
+                entity.axMap.fraction = math.min(entity.axMap.fraction, -friction)
             elseif vx < -1 then
-                entity.axMap.fraction = math.max(entity.axMap.fraction, groundCol.other.friction or defaultFriction)
+                entity.axMap.fraction = math.max(entity.axMap.fraction, friction)
             else
                 entity.axMap.fraction = 0
                 entity.vx = 0
