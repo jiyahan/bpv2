@@ -17,7 +17,7 @@ function SlimeCmd:onEnable()
             else
                 entity.cmdX = 0
             end
-            self:scheduleTimer("releaseY", 0.5, function()
+            self:scheduleTimer("releaseY", 0.2, function()
                 entity.cmdY = 0
             end)
             self:scheduleTimer("releaseX", 0.8, function()

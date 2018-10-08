@@ -7,6 +7,9 @@ hero:addComponent(PhysicsMove)
 hero:addComponent(RecoverJumpForceByLand)
 hero:addComponent(Gravity)
 hero:addComponent(AccSystem)
+hero:addComponent(BeHit)
+hero:addComponent(RenderHitting)
+hero:addComponent(HitBack)
 hero:setData({
     name = 'hero',
     x = 150,

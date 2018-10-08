@@ -8,7 +8,9 @@ function Camera:onEnable()
         love.graphics.push()
         love.graphics.translate(-x, -y)
         for i = 1, len do
+            items[i]:popEvent("beforeCameraDraw")
             items[i]:popEvent("cameraDraw")
+            items[i]:popEvent("afterCameraDraw")
         end
         love.graphics.pop()
     end)

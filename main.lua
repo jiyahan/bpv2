@@ -23,6 +23,8 @@ function love.update(dt)
     -- => nextX nextY
     event.onAccSystemUpdate:Trigger(dt)
 
+    event.onAfterLateUpdate:Trigger(dt)
     --  =>v x y
     event.onLateUpdate:Trigger(dt)
+
 end

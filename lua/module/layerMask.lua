@@ -1,6 +1,6 @@
 local layerMask = {}
 
-local player, playerbullet, enemy, enemybullet, brick, trigger = 0, 1, 2, 3, 4, 5
+local player, playerBullet, enemy, enemyBullet, brick, trigger = 0, 1, 2, 3, 4, 5
 
 local function getLayerTag(layer)
     return bit.lshift(1, layer)
@@ -20,7 +20,7 @@ function layerMask.collideWith(a, b)
 end
 
 function layerMask.hurt(a, b)
-    return bit.band(a.dmg, b.tag) ~= 0
+    return bit.band(a.layerMask.dmg, b.layerMask.tag) ~= 0
 end
 
 function layerMask.getLayer(name)
@@ -50,24 +50,24 @@ layerMask.player.tag = getLayerTag(player)
 layerMask.player.col = bitOrLayer(brick)
 layerMask.player.dmg = 0
 
-layerMask.playerbullet = {}
-layerMask.playerbullet.tag = getLayerTag(playerbullet)
-layerMask.playerbullet.col = bitOrLayer(enemy, brick)
-layerMask.playerbullet.dmg = bitOrLayer(enemy, brick)
+layerMask.playerBullet = {}
+layerMask.playerBullet.tag = getLayerTag(playerBullet)
+layerMask.playerBullet.col = bitOrLayer(enemy, brick)
+layerMask.playerBullet.dmg = bitOrLayer(enemy, brick)
 
 layerMask.enemy = {}
 layerMask.enemy.tag = getLayerTag(enemy)
-layerMask.enemy.col = bitOrLayer(playerbullet, brick)
-layerMask.enemy.dmg = bitOrLayer(player)
+layerMask.enemy.col = bitOrLayer(playerBullet, brick)
+layerMask.enemy.dmg = 0
 
-layerMask.enemybullet = {}
-layerMask.enemybullet.tag = getLayerTag(enemybullet)
-layerMask.enemybullet.col = bitOrLayer(player, brick)
-layerMask.enemybullet.dmg = bitOrLayer(player)
+layerMask.enemyBullet = {}
+layerMask.enemyBullet.tag = getLayerTag(enemyBullet)
+layerMask.enemyBullet.col = bitOrLayer(brick)
+layerMask.enemyBullet.dmg = bitOrLayer(player)
 
 layerMask.brick = {}
 layerMask.brick.tag = getLayerTag(brick)
-layerMask.brick.col = bitOrLayer(player, playerbullet, enemy, enemybullet, brick)
+layerMask.brick.col = bitOrLayer(player, playerBullet, enemy, enemyBullet, brick)
 layerMask.brick.dmg = 0
 
 return layerMask

@@ -5,7 +5,7 @@ local FollowHeroCmd = Component:extends()
 
 function FollowHeroCmd:onEnable()
     local entity = self.entity
-    self:scheduleTimerAtFixedRate("t1", 0, 2, function()
+    self:scheduleTimerAtFixedRate("t1", 0, 1, function()
         local viewWidth = entity.viewWidth or defaulViewWidth
         local viewHeight = entity.viewHeight or defaulViewHeight
         self.targetEntity = utils.findTarget(entity.x, entity.y, viewWidth, viewHeight, function(item)
@@ -26,16 +26,19 @@ function FollowHeroCmd:onEnable()
         else
             cmdX = 0
         end
-
         self.entity.cmdX = cmdX
-        self:scheduleTimer("jump", 0.5, function()
-            self.entity.cmdY = -1
-            self:scheduleTimer("release", 0.2, function()
-                self.entity.cmdY = 0
-            end)
-        end)
 
-        debug.followHeroCmd = string.format("CmdX:%s", cmdX)
+        if self.targetEntity then
+            local disY = entity.y - self.targetEntity.y
+            if disY > 30 then
+                self:scheduleTimer("jump", 0.5, function()
+                    self.entity.cmdY = -1
+                    self:scheduleTimer("release", 0.2, function()
+                        self.entity.cmdY = 0
+                    end)
+                end)
+            end
+        end
     end)
 end
 

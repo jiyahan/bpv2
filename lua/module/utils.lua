@@ -62,19 +62,28 @@ function utils.randomFrom(listTable)
     end
 end
 
-function utils.findTarget(x,y,w,h,filter)
+function utils.findTarget(x, y, w, h, filter)
     utils.assertType('number', x, ' x')
     utils.assertType('number', y, ' y')
     utils.assertType('number', w, ' w')
     utils.assertType('number', h, ' h')
 
     local items, len = world:queryRect(x - w / 2, y - h / 2,
-        w, h,filter)
+        w, h, filter)
     if len > 0 then
         return items[1]
     else
         return nil
     end
+end
+
+function utils.setColor(color)
+    love.graphics.setColor(color[1], color[2], color[3], color[4])
+end
+
+function utils.getColor()
+    local r, g, b, a = love.graphics.getColor()
+    return { r, g, b, a }
 end
 
 return utils
