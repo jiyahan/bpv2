@@ -1,4 +1,6 @@
 local NearAttack = Component:extends()
+local defaultBulletColor = { 1, 0, 0, 1 }
+local defaultBulletLayer = layerMask.enemyBullet
 function NearAttack:onPopEvent(type, data)
     local entity = self.entity
     if type == "attack" then
@@ -14,9 +16,11 @@ function NearAttack:onPopEvent(type, data)
             w = entity.w,
             h = entity.h,
             timeLife = 0.1,
-            color = { 1, 0, 0, 1 },
-            layerMask = layerMask.enemyBullet
+            color = entity.bulletColor or defaultBulletColor,
+            layerMask = entity.bulletLayer or defaultBulletLayer,
         })
+        print("create")
+        utils.printt(bulletEntity.layerMask)
         bulletEntity:show()
     end
 end

@@ -6,7 +6,10 @@ slime:addComponent(Gravity)
 slime:addComponent(AccSystem)
 slime:addComponent(GameObject)
 slime:addComponent(PhysicsMove)
-slime:addComponent(SlimeCmd)
+slime:addComponent(SlimeAI)
+slime:addComponent(PopHitEvent)
+slime:addComponent(RenderHitting)
+slime:addComponent(HitBack)
 slime:setData({
     name = "slime",
     x = 300,
@@ -15,8 +18,7 @@ slime:setData({
     h = 25,
     maxVx = 150,
     friction = 50,
-    color = { 1, 0, 0, 1 },
-layerMask = layerMask.enemyBullet
+    layerMask = layerMask.enemy,
 })
 slime:show()
 return slime

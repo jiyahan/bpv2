@@ -50,15 +50,15 @@ layerMask.player.tag = getLayerTag(player)
 layerMask.player.col = bitOrLayer(brick)
 layerMask.player.dmg = 0
 
-layerMask.playerBullet = {}
-layerMask.playerBullet.tag = getLayerTag(playerBullet)
-layerMask.playerBullet.col = bitOrLayer(enemy, brick)
-layerMask.playerBullet.dmg = bitOrLayer(enemy, brick)
-
 layerMask.enemy = {}
 layerMask.enemy.tag = getLayerTag(enemy)
-layerMask.enemy.col = bitOrLayer(playerBullet, brick)
+layerMask.enemy.col = bitOrLayer(brick)
 layerMask.enemy.dmg = 0
+
+layerMask.playerBullet = {}
+layerMask.playerBullet.tag = getLayerTag(playerBullet)
+layerMask.playerBullet.col = bitOrLayer(brick)
+layerMask.playerBullet.dmg = bitOrLayer(enemy)
 
 layerMask.enemyBullet = {}
 layerMask.enemyBullet.tag = getLayerTag(enemyBullet)

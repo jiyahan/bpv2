@@ -1,6 +1,6 @@
 local utils = {}
 
-function utils.getAxis1()
+function utils.getAxisWasd()
     local x, y = 0, 0
     if love.keyboard.isDown("w") then
         y = -1
@@ -17,7 +17,7 @@ function utils.getAxis1()
     return x, y
 end
 
-function utils.getAxis2()
+function utils.getAxisArrow()
     local x, y = 0, 0
     if love.keyboard.isDown("up") then
         y = -1
@@ -84,6 +84,13 @@ end
 function utils.getColor()
     local r, g, b, a = love.graphics.getColor()
     return { r, g, b, a }
+end
+
+function utils.printt(t)
+    print(t)
+    for k, v in pairs(t) do
+        print(k, v)
+    end
 end
 
 return utils

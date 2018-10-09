@@ -7,6 +7,9 @@ enemy:addComponent(AccSystem)
 enemy:addComponent(GameObject)
 enemy:addComponent(PhysicsMove)
 enemy:addComponent(ZombieAI)
+enemy:addComponent(PopHitEvent)
+enemy:addComponent(RenderHitting)
+enemy:addComponent(HitBack)
 enemy:addComponent(NearAttack)
 enemy:setData({
     name = "enemy",

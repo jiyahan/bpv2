@@ -12,9 +12,7 @@ function RuntimeTest:onEnable()
 end
 
 function RuntimeTest:f5()
-    for k, v in pairs(hero) do
-        print(k, v)
-    end
+    print(hero.bulletLayer.dmg)
 end
 
 return RuntimeTest

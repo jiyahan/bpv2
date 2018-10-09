@@ -46,6 +46,8 @@ function GameObject:onLateUpdate(dt)
     local actualX, actualY, cols, len = world:move(self.entity, nx, ny, layerMask.filter)
     entity.x = actualX
     entity.y = actualY
+    entity.vy = entity.vy or 0
+    entity.vx = entity.vx or 0
     for i = 1, len do
         local col = cols[i]
         if col.type == 'slide' then

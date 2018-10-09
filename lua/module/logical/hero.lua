@@ -2,7 +2,7 @@ local hero = Entity:new()
 
 hero:addComponent(RenderRect)
 hero:addComponent(GameObject)
-hero:addComponent(WasdCmd)
+hero:addComponent(PlayerCmd)
 hero:addComponent(PhysicsMove)
 hero:addComponent(RecoverJumpForceByLand)
 hero:addComponent(Gravity)
@@ -10,6 +10,7 @@ hero:addComponent(AccSystem)
 hero:addComponent(PopHitEvent)
 hero:addComponent(RenderHitting)
 hero:addComponent(HitBack)
+hero:addComponent(NearAttack)
 hero:setData({
     name = 'hero',
     x = 150,
@@ -20,6 +21,8 @@ hero:setData({
     friction = 15,
     layerMask = layerMask.player,
     maxJumpTime = 3,
+    bulletColor = { 0, 0.5, 0.6, 1 },
+    bulletLayer = layerMask.playerBullet,
 })
 hero:show()
 
