@@ -17,5 +17,5 @@ slime:setData({
     friction = 50,
     layerMask = layerMask.enemyBullet
 })
-slime:show()
+--slime:show()
 return slime

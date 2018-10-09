@@ -7,7 +7,7 @@ hero:addComponent(PhysicsMove)
 hero:addComponent(RecoverJumpForceByLand)
 hero:addComponent(Gravity)
 hero:addComponent(AccSystem)
-hero:addComponent(BeHit)
+hero:addComponent(PopHitEvent)
 hero:addComponent(RenderHitting)
 hero:addComponent(HitBack)
 hero:setData({

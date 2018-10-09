@@ -1,6 +1,6 @@
-local BeHit = Component:extends()
+local PopHitEvent = Component:extends()
 local hittingCd = 2
-function BeHit:onPopEvent(type, data)
+function PopHitEvent:onPopEvent(type, data)
     local entity = self.entity
     entity.hitting = entity.hitting or false
     if entity.hitting then
@@ -19,4 +19,4 @@ function BeHit:onPopEvent(type, data)
     end
 end
 
-return BeHit
+return PopHitEvent

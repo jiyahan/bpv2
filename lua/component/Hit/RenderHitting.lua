@@ -4,6 +4,7 @@ local period2 = period1 / 2
 local color1 = { 1, 0.5, 0.5, 0.2 }
 local color2 = { 1, 0.5, 0.5, 0.8 }
 function RenderHitting:onPopEvent(type, data)
+    local entity = self.entity
     if type == "beHit" then
         self:scheduleTimerAtFixedRate("change1", 0, period1, function()
             self.color = color1
@@ -18,10 +19,10 @@ function RenderHitting:onPopEvent(type, data)
     if self.entity.hitting then
         if self.color then
             if type == "beforeCameraDraw" then
-                self.oldColor = utils.getColor()
-                utils.setColor(self.color)
+                self.oldColor = entity.color
+                entity.color = self.color
             elseif type == "afterCameraDraw" then
-                utils.setColor(self.oldColor)
+                entity.color = self.oldColor
             end
         end
     end

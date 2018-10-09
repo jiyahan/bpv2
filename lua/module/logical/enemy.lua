@@ -7,6 +7,8 @@ enemy:addComponent(AccSystem)
 enemy:addComponent(GameObject)
 enemy:addComponent(PhysicsMove)
 enemy:addComponent(FollowHeroCmd)
+enemy:addComponent(PopNearAttack)
+enemy:addComponent(NearAttack)
 enemy:setData({
     name = "enemy",
     x = 200,
@@ -16,5 +18,5 @@ enemy:setData({
     maxVx = 50,
     layerMask = layerMask.enemy
 })
---enemy:show()
+enemy:show()
 return enemy
