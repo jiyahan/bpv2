@@ -1,5 +1,5 @@
 local PopHitEvent = Component:extends()
-local hittingCd = 2
+local hittingCd = 0.8
 function PopHitEvent:onPopEvent(type, data)
     local entity = self.entity
     entity.hitting = entity.hitting or false

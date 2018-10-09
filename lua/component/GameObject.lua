@@ -68,10 +68,8 @@ function GameObject:onLateUpdate(dt)
 end
 
 function GameObject:onDisable()
-    if self.createSuccess then
-        local entity = self.entity
-        world:remove(entity)
-    end
+    local entity = self.entity
+    world:remove(entity)
 end
 
 return GameObject

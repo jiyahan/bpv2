@@ -15,7 +15,8 @@ slime:setData({
     h = 25,
     maxVx = 150,
     friction = 50,
-    layerMask = layerMask.enemyBullet
+    color = { 1, 0, 0, 1 },
+layerMask = layerMask.enemyBullet
 })
---slime:show()
+slime:show()
 return slime

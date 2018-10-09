@@ -1,8 +1,8 @@
 local RenderHitting = Component:extends()
-local period1 = 0.35
+local period1 = 0.2
 local period2 = period1 / 2
-local color1 = { 1, 0.5, 0.5, 0.2 }
-local color2 = { 1, 0.5, 0.5, 0.8 }
+local color1 = { 1, 1, 1, 0.4 }
+local color2 = { 1, 1,1, 0.5 }
 function RenderHitting:onPopEvent(type, data)
     local entity = self.entity
     if type == "beHit" then

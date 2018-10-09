@@ -18,7 +18,8 @@ hero:setData({
     h = 20,
     maxVx = 100,
     friction = 15,
-    layerMask = layerMask.player
+    layerMask = layerMask.player,
+    maxJumpTime = 3,
 })
 hero:show()
 

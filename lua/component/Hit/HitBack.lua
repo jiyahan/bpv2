@@ -1,6 +1,6 @@
 local HitBack = Component:extends()
 local time = 0.2
-local backVx, backVy = 800, -200
+local backVx, backVy = 800, -50
 function HitBack:onPopEvent(type, data)
     local entity = self.entity
     if type == "beHit" then

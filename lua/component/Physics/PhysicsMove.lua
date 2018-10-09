@@ -4,7 +4,7 @@
 
 local PhysicsMove = Component:extends()
 local ax, ay = 300, 10000
-local maxJumpEnergy, maxJumpTime = 0.1, 2
+local maxJumpEnergy, defaulMaxJumpTime = 0.1, 1
 local checkY = 1
 local littlehelp = 300
 local umbrellaInitFallSpeed = 100
@@ -127,7 +127,7 @@ function PhysicsMove:onEnable()
                     end
                 end
             else --没按上
-                entity.jumpTime = maxJumpTime
+                entity.jumpTime = entity.maxJumpTime or defaulMaxJumpTime
                 entity.jumpEnergy = 0
                 entity.released = true
                 entity.ayMap.axis1 = 0

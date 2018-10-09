@@ -6,8 +6,7 @@ enemy:addComponent(Gravity)
 enemy:addComponent(AccSystem)
 enemy:addComponent(GameObject)
 enemy:addComponent(PhysicsMove)
-enemy:addComponent(FollowHeroCmd)
-enemy:addComponent(PopNearAttack)
+enemy:addComponent(ZombieAI)
 enemy:addComponent(NearAttack)
 enemy:setData({
     name = "enemy",
