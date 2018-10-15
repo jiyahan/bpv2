@@ -3,7 +3,7 @@ local OpenMenu = Component:extends()
 function OpenMenu:onEnable()
     self:reg(event.onKeyPressed, function(key)
         if key == "escape" then
-            menu:show()
+            panelPauseMenu:show()
         end
     end)
 end

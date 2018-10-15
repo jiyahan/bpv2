@@ -13,7 +13,9 @@ function Gravity:onPhysicsUpdate(dt)
 end
 
 function Gravity:onDisable()
-    self.entity.ayMap.gravityY = nil
+    if self.entity.ayMap then
+        self.entity.ayMap.gravityY = nil
+    end
 end
 
 return Gravity

@@ -1,4 +1,4 @@
-local Scene1 = Component:extends()
+local CreateBricks = Component:extends()
 
 local function createBrick(x, y)
     local brick = Entity:new()
@@ -16,28 +16,25 @@ local function createBrick(x, y)
     return brick
 end
 
-function Scene1:onEnable()
+function CreateBricks:onEnable()
 
     hero:show()
     enemy:show()
     slime:show()
 
-    local bricks = {}
-    for x = 1, 200 do
-        for y = 1, 3 do
-            table.insert(bricks, createBrick(x, y))
+    self.bricks = {}
+    local mapdata = self.entity.mapdata
+    for _, item in ipairs(mapdata) do
+        for x = item[1], item[2] do
+            for y = item[3], item[4] do
+                table.insert(self.bricks, createBrick(x, y))
+            end
         end
     end
 
-    for x = 2, 3 do
-        for y = -5, 0 do
-            table.insert(bricks, createBrick(x, y))
-        end
-    end
-    self.bricks = bricks
 end
 
-function Scene1:onDisable()
+function CreateBricks:onDisable()
     for k, v in ipairs(self.bricks) do
         v:hide()
     end
@@ -46,4 +43,4 @@ function Scene1:onDisable()
     slime:hide()
 end
 
-return Scene1
+return CreateBricks
