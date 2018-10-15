@@ -11,8 +11,12 @@ hero:addComponent(PopHitEvent)
 hero:addComponent(RenderHitting)
 hero:addComponent(HitBack)
 hero:addComponent(NearAttack)
+hero:addComponent(HeroHp)
+hero:addComponent(HitDamage)
+hero:addComponent(DeadOnEvent)
 hero:setData({
     name = 'hero',
+    hp = 5,
     x = 150,
     y = -50,
     w = 20,
@@ -24,6 +28,5 @@ hero:setData({
     bulletColor = { 0, 0.5, 0.6, 1 },
     bulletLayer = layerMask.playerBullet,
 })
-hero:show()
 
 return hero

@@ -1,9 +1,12 @@
 function love.load()
+    love.graphics.setDefaultFilter('nearest')
+    love.graphics.setLineStyle("rough")
     require "autoScript.autoRequires"
 end
 
 function love.draw()
     event.onDraw:Trigger()
+    event.onDrawUi:Trigger()
 end
 
 function love.keypressed(key)
@@ -11,6 +14,11 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
+
+    if _G.pause then
+        return
+    end
+
     --  => CmdX CmdY
     timer.onUpdate(dt)
 
@@ -26,5 +34,8 @@ function love.update(dt)
     event.onAfterLateUpdate:Trigger(dt)
     --  =>v x y
     event.onLateUpdate:Trigger(dt)
+end
 
+function love.resize(w, h)
+    event.resize:Trigger(w, h)
 end

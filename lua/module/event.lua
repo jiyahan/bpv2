@@ -7,6 +7,7 @@ event.onAfterLateUpdate = SimpleEvent:New("onAfterLateUpdate")
 event.onCamDraw = SimpleEvent:New("onCamDraw")
 event.resize = SimpleEvent:New("resize")
 event.onDraw = SimpleEvent:New("onDraw")
+event.onDrawUi = SimpleEvent:New("onDrawUi")
 event.onKeyPressed = SimpleEvent:New("onKeyPressed")
 event.onDoShake = SimpleEvent:New("onDoShake")
 return event

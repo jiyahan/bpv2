@@ -12,7 +12,7 @@ function RuntimeTest:onEnable()
 end
 
 function RuntimeTest:f5()
-    print(hero.bulletLayer.dmg)
+    scene:show()
 end
 
 return RuntimeTest

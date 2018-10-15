@@ -10,6 +10,7 @@ function Camera:onEnable()
         for i = 1, len do
             items[i]:popEvent("beforeCameraDraw")
             items[i]:popEvent("cameraDraw")
+            items[i]:popEvent("cameraDrawUI")
             items[i]:popEvent("afterCameraDraw")
         end
         love.graphics.pop()

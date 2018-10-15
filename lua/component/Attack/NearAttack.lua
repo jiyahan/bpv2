@@ -19,8 +19,6 @@ function NearAttack:onPopEvent(type, data)
             color = entity.bulletColor or defaultBulletColor,
             layerMask = entity.bulletLayer or defaultBulletLayer,
         })
-        print("create")
-        utils.printt(bulletEntity.layerMask)
         bulletEntity:show()
     end
 end
