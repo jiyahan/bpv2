@@ -4,7 +4,7 @@ function MapDoor:onPopEvent(type, data)
     if type == "onCollision" then
         local other = data.other
         if other.layerMask == layerMask.player then
-            sceneMgr:create("config/Map2.csv")
+            sceneMgr:goto("config/Map2.csv")
         end
     end
 end

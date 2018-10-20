@@ -1,4 +1,4 @@
-local doorMgr = {}
+local doorMgr = entityMgr:extends()
 
 function doorMgr:create(x, y)
     local entity = Entity:new()
@@ -12,18 +12,8 @@ function doorMgr:create(x, y)
         y = y
     })
     entity:show()
-    self.entityList = self.entityList or {}
-    table.insert(self.entityList, entity)
+    self:addEntity(entity)
     return entity
-end
-
-function doorMgr:clear()
-    if self.entityList then
-        for _, entity in ipairs(self.entityList) do
-            entity:hide()
-        end
-        self.entityList = nil
-    end
 end
 
 return doorMgr

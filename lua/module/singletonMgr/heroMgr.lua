@@ -1,8 +1,7 @@
 local heroMgr = {}
 
-function heroMgr:create(x, y)
+function heroMgr:get()
     if self.hero then
-        self.hero:show()
         return self.hero
     end
     local hero = Entity:new()
@@ -34,7 +33,6 @@ function heroMgr:create(x, y)
         bulletColor = { 0, 0.5, 0.6, 1 },
         bulletLayer = layerMask.playerBullet,
     })
-    hero:show()
     self.hero = hero
     return hero
 end
@@ -42,6 +40,7 @@ end
 function heroMgr:clear()
     if self.hero then
         self.hero:hide()
+        self.hero = nil
     end
 end
 

@@ -8,7 +8,7 @@ function PlayerCmd:onEnable()
             self:onAttackPressing()
         end
         local x, y = love.mouse.getPosition()
-        local wx, wy = x + camera.x, y + camera.y
+        local wx, wy = x + camMgr:get().x, y + camMgr:get().y
         entity.dir = 1
         if wx < entity.x then
             entity.dir = -1
