@@ -13,7 +13,7 @@ end
 
 panelStartMenu.bars[1].text = "Start"
 panelStartMenu.bars[1].callback = function()
-    scene:show()
+    sceneMgr:create("config/map1.csv")
 end
 panelStartMenu.bars[2].text = "Quit"
 panelStartMenu.bars[2].callback = function()

@@ -1,14 +1,6 @@
 --local StreamMap = require "lua.common.StreamMap"
 local Entity = Object:extends()
 
-function Entity.create(types)
-    local entity = Entity:new()
-    for k, v in pairs(types) do
-        entity:addComponent(v)
-    end
-    return entity
-end
-
 function Entity:onNew()
     self.components = StreamMap:New()
 end
@@ -39,6 +31,12 @@ function Entity:hide()
     self.components:ForEach(function(cls, com)
         com:setActive(false)
     end)
+end
+
+function Entity:addComponents(types)
+    for _, v in pairs(types) do
+        self:addComponent(v)
+    end
 end
 
 function Entity:addComponent(comCls)

@@ -21,8 +21,6 @@ function VerticalMenu:onEnable()
     end)
     self:onRender()
     camera:hide()
-    hero:removeComponent(HeroHp)
-
 end
 
 function VerticalMenu:onRender()
@@ -44,10 +42,7 @@ function VerticalMenu:onDisable()
         end
     end
     camera:show()
-    hero:addComponent(HeroHp)
-    hero:hide()
-    hero:show()
-
+--    hero:addComponent(HeroHp)
     _G.pause = false
 end
 
