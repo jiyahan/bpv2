@@ -40,7 +40,7 @@ end
 function Entity:addComponent(comCls)
     local com = comCls:new({ entity = self })
     self.components:Put(comCls, com)
-    if self.isActive then
+    if self.isEnable then
         com:setActive(true)
     end
 end

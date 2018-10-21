@@ -15,12 +15,12 @@ function PhysicsMove:onEnable()
     self:reg(event.onPhysicsUpdate, function(dt)
         local entity = self.entity
         local _, _, cols, len = world:check(entity, entity.x, entity.y + checkY, layerMask.filter)
-        local isGrounded = false
+        entity.isGrounded = false
         local groundCol = nil
         for i = 1, len do
             local col = cols[i]
             if col.type == "slide" and col.normal.y ~= 0 and entity.y < col.other.y then
-                isGrounded = true
+                entity.isGrounded = true
                 groundCol = col
                 break
             end
@@ -31,7 +31,7 @@ function PhysicsMove:onEnable()
         entity.vy = entity.vy or 0
 
         local x, y = entity.cmdX or 0, entity.cmdY or 0
-        if not isGrounded then -- 在空中
+        if not entity.isGrounded then -- 在空中
             if y < 0 then --向上
                 if not entity.released then -- 之前没松手
                     if entity.jumpEnergy > 0 then --还有能量
@@ -139,7 +139,7 @@ function PhysicsMove:onEnable()
         entity.axMap = entity.axMap or {}
         entity.axMap.fraction = entity.axMap.fraction or 0
         entity.axMap.axis1 = x * ax
-        if isGrounded then
+        if entity.isGrounded then
             local vx = entity.vx or 0
             -- 地板摩擦力
             local otherFriction = groundCol.other.friction or defaultFriction
@@ -163,7 +163,7 @@ function PhysicsMove:onEnable()
         local s4 = "axis1:" .. entity.ayMap.axis1
         local s5 = "vy:" .. entity.vy
         local s6 = string.format("released:%s", entity.released)
-        local s7 = string.format("isGrounded:%s", isGrounded)
+        local s7 = string.format("isGrounded:%s", entity.isGrounded)
         local s8 = string.format("vx:%s", entity.vx)
         local s9 = string.format("axMap.fraction:%s", entity.axMap.fraction)
         debug.physicsMove = string.format("physicsMove:\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",
