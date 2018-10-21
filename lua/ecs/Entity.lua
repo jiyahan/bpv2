@@ -5,15 +5,13 @@ function Entity:onNew()
     self.components = StreamMap:New()
 end
 
-function Entity:setActive(active)
-    if active then
-        self:show()
-    else
-        self:hide()
-    end
-end
-
 function Entity:show()
+    if not self.inited then
+        if self.onInit then
+            self:onInit()
+        end
+        self.inited = true
+    end
     if self.isEnable then
         return
     end

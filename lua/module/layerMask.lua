@@ -20,8 +20,8 @@ function layerMask.collideWith(a, b)
 end
 
 function layerMask.hurt(a, b)
-    utils.assetNotNil(a.layerMask,a.name.." layerMask")
-    utils.assetNotNil(b.layerMask,b.name.." layerMask")
+    utils.assetNotNil(a.layerMask, a.name .. " layerMask")
+    utils.assetNotNil(b.layerMask, b.name .. " layerMask")
     return bit.band(a.layerMask.dmg, b.layerMask.tag) ~= 0
 end
 

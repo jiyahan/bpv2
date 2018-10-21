@@ -31,9 +31,10 @@ function GameObject:onPhysicsUpdate(dt)
         end
         local entity = self.entity
         local items, len = world:queryRect(entity.x, entity.y, entity.w, entity.h, filter)
-        if len == 0 then
+        if len == 0 and self.oldLayerMask then
             self.entity.layerMask = self.oldLayerMask
             self.createSuccess = true
+            self.oldLayerMask = nil
         end
     end
 end

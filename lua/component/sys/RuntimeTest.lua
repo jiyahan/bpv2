@@ -12,7 +12,12 @@ function RuntimeTest:onEnable()
 end
 
 function RuntimeTest:f5()
-    scene:show()
+--    local hero = heroMgr:get()
+--    hero:setData({ x = 100, y = 50 })
+--    hero:show()
+--    utils.printt(hero)
+
+    ui.panelDashBoard:show()
 end
 
 return RuntimeTest

@@ -5,9 +5,14 @@ local function UnregisterEvtHandlerEach(unreg)
 end
 
 function Component:setActive(active)
+    if self.isActive == active then
+        return
+    end
     self.isActive = active
     if active then
-        self:onEnable()
+        if self.onEnable then
+            self:onEnable()
+        end
     else
         if self.__evthandlers ~= nil then
             self.__evthandlers:ForEach(UnregisterEvtHandlerEach)
@@ -20,14 +25,10 @@ function Component:setActive(active)
             end
             self.__timer_fixedids = nil
         end
-        self:onDisable()
+        if self.onDisable then
+            self:onDisable()
+        end
     end
-end
-
-function Component:onEnable()
-end
-
-function Component:onDisable()
 end
 
 function Component:scheduleTimer(fixid, delay, task, ...)

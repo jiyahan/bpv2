@@ -9,22 +9,38 @@ function sceneMgr:goto(mapPath)
         for i, v in ipairs(t) do
             local x, y = i * cfg.worldCellSize, j * cfg.worldCellSize
             if v == "1" then
-                brickMgr:create(x, y)
+                local brick = Brick:new({ x = x, y = y })
+                brick:show()
+                self:addEntity(brick)
             elseif v == "2" then
                 local hero = heroMgr:get()
-                hero:setData({ x = x, y = y, vx = 0, vy = 0 })
+                hero:setData({ x = x, y = y })
                 hero:show()
-            elseif v == "door:config/map2.csv" then
-                doorMgr:create(x, y)
+            elseif utils.startwith(v, "door") then
+                local ts = utils.split(v, ":")
+                local door = Door:new({ x = x, y = y, mapPath = ts[2] })
+                door:show()
+                self:addEntity(door)
             end
         end
     end
 end
 
+function sceneMgr:addEntity(entity)
+    self.entityList = self.entityList or {}
+    table.insert(self.entityList, entity)
+end
+
 function sceneMgr:clear()
-    brickMgr:clear()
-    doorMgr:clear()
-    heroMgr:get():hide()
+    if self.entityList then
+        for _, entity in ipairs(self.entityList) do
+            entity:hide()
+        end
+        self.entityList = nil
+    end
+
+--    local hero = heroMgr:get()
+--    hero:hide()
 end
 
 return sceneMgr

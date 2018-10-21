@@ -40,10 +40,10 @@ function utils.assertType(desiredType, value, name)
     end
 end
 
-function utils.assetNotNil(value,name)
+function utils.assetNotNil(value, name)
     if value == nil then
         name = name or "value"
-        error(name.." should not be nil")
+        error(name .. " should not be nil")
     end
 end
 
@@ -88,10 +88,12 @@ function utils.getColor()
 end
 
 function utils.printt(t)
+    print("<------------------")
     print(t)
     for k, v in pairs(t) do
         print(k, v)
     end
+    print("------------------>")
 end
 
 function utils.split(str, pat)
@@ -111,6 +113,11 @@ function utils.split(str, pat)
         table.insert(t, cap)
     end
     return t
+end
+
+function utils.startwith(ori, target)
+    local start, e = string.find(ori, target)
+    return start == 1
 end
 
 return utils
