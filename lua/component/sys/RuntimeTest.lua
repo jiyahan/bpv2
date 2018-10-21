@@ -17,8 +17,8 @@ function RuntimeTest:f5()
 --    hero:show()
 --    utils.printt(hero)
 
---    ui.panelDashBoard:removeComponent(PhysicsInfo)
-    ui.panelDashBoard:addComponent(PhysicsInfo)
+    ui.panelDashBoard:removeComponent(PhysicsInfo)
+--    ui.panelDashBoard:addComponent(PhysicsInfo)
 end
 
 return RuntimeTest

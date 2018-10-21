@@ -1,6 +1,6 @@
 local layerMask = {}
 
-local player, playerBullet, enemy, enemyBullet, brick, trigger = 0, 1, 2, 3, 4, 5
+local player, playerBullet, zombie, enemyBullet, brick, trigger, slime = 0, 1, 2, 3, 4, 5, 6
 
 local function getLayerTag(layer)
     return bit.lshift(1, layer)
@@ -52,15 +52,20 @@ layerMask.player.tag = getLayerTag(player)
 layerMask.player.col = bitOrLayer(brick)
 layerMask.player.dmg = 0
 
-layerMask.enemy = {}
-layerMask.enemy.tag = getLayerTag(enemy)
-layerMask.enemy.col = bitOrLayer(brick)
-layerMask.enemy.dmg = 0
+layerMask.zombie = {}
+layerMask.zombie.tag = getLayerTag(zombie)
+layerMask.zombie.col = bitOrLayer(brick)
+layerMask.zombie.dmg = 0
+
+layerMask.slime = {}
+layerMask.slime.tag = getLayerTag(slime)
+layerMask.slime.col = bitOrLayer(brick)
+layerMask.slime.dmg = bitOrLayer(player)
 
 layerMask.playerBullet = {}
 layerMask.playerBullet.tag = getLayerTag(playerBullet)
 layerMask.playerBullet.col = bitOrLayer(brick)
-layerMask.playerBullet.dmg = bitOrLayer(enemy)
+layerMask.playerBullet.dmg = bitOrLayer(zombie)
 
 layerMask.enemyBullet = {}
 layerMask.enemyBullet.tag = getLayerTag(enemyBullet)
@@ -69,7 +74,7 @@ layerMask.enemyBullet.dmg = bitOrLayer(player)
 
 layerMask.brick = {}
 layerMask.brick.tag = getLayerTag(brick)
-layerMask.brick.col = bitOrLayer(player, playerBullet, enemy, enemyBullet, brick)
+layerMask.brick.col = bitOrLayer(player, playerBullet, zombie, enemyBullet, brick, slime)
 layerMask.brick.dmg = 0
 
 return layerMask

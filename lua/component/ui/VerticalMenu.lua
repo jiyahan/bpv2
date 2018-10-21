@@ -1,11 +1,11 @@
 local VerticalMenu = Component:extends()
 local barWidth, barHeight = 100, 40
 local startY = 200
-local barNum = 2
 
 function VerticalMenu:onEnable()
     _G.pause = true
     local entity = self.entity
+    local barNum = #entity.bars
     self:reg(event.onKeyPressed, function(key)
         if key == "s" or key == "down" then
             entity.index = entity.index % barNum + 1

@@ -22,7 +22,7 @@ function Zombie:onInit()
         w = 30,
         h = 30,
         maxVx = 50,
-        layerMask = layerMask.enemy
+        layerMask = layerMask.zombie
     })
 end
 

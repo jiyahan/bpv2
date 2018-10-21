@@ -8,19 +8,30 @@ function sceneMgr:goto(mapPath)
         local t = utils.split(line, ",")
         for i, v in ipairs(t) do
             local x, y = i * cfg.worldCellSize, j * cfg.worldCellSize
+            local entity = nil
+
             if v == "1" then
-                local brick = Brick:new({ x = x, y = y })
-                brick:show()
-                self:addEntity(brick)
-            elseif v == "2" then
-                local hero = heroMgr:get()
-                hero:setData({ x = x, y = y })
-                hero:show()
+                entity = Brick:new({ x = x, y = y })
+            elseif v == "hero" then
+                entity = heroMgr:get()
+                entity:setData({
+                    x = x,
+                    y = y,
+                })
+            elseif v == "zombie" then
+                entity = Zombie:new()
+                entity:setData({ x = x, y = y })
+            elseif v == "slime" then
+                entity = Slime:new()
+                entity:setData({ x = x, y = y })
             elseif utils.startwith(v, "door") then
                 local ts = utils.split(v, ":")
-                local door = Door:new({ x = x, y = y, mapPath = ts[2] })
-                door:show()
-                self:addEntity(door)
+                entity = Door:new({ x = x, y = y, mapPath = ts[2] })
+            end
+
+            if entity then
+                entity:show()
+                self:addEntity(entity)
             end
         end
     end
@@ -39,8 +50,8 @@ function sceneMgr:clear()
         self.entityList = nil
     end
 
---    local hero = heroMgr:get()
---    hero:hide()
+    --    local hero = heroMgr:get()
+    --    hero:hide()
 end
 
 return sceneMgr

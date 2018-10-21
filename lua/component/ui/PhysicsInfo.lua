@@ -9,8 +9,8 @@ function PhysicsInfo:onEnable()
         local s1 = "jumpEngergy:" .. hero.jumpEnergy
         local s2 = "jumpTime:" .. hero.jumpTime
         local s3 = string.format("CmdY:%2d", hero.cmdY)
-        local s4 = "axis1:" .. hero.ayMap.axis1
-        local s5 = string.format("vy:%2d", hero.vy)
+        local s4 =string.format("axis1:%2d", hero.ayMap.axis1 or 0)
+        local s5 = string.format("vy:%2d", hero.realVy or 0)
         local s6 = string.format("released:%s", hero.released)
         local s7 = string.format("isGrounded:%s", hero.isGrounded)
         local s8 = string.format("vx:%2d", hero.vx)
@@ -23,6 +23,7 @@ function PhysicsInfo:onEnable()
         love.graphics.rectangle("fill", 10, 40, 100, 200)
         utils.setColor({ 1, 1, 1, 1 })
         love.graphics.print(s, 10, 40)
+        utils.setColor(oldColor)
     end)
 end
 

@@ -12,7 +12,6 @@ function Hero:onInit()
     self:addComponent(RenderHitting)
     self:addComponent(HitBack)
     self:addComponent(NearAttack)
---    self:addComponent(HeroHp)
     self:addComponent(HitDamage)
     self:addComponent(DeadOnEvent)
     self:setData({

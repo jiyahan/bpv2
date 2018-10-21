@@ -48,6 +48,7 @@ function AccSystem:onAccSystemUpdate(dt)
 
     entity.nextX = entity.x + entity.vx * dt
     entity.nextY = entity.y + entity.vy * dt
+
 end
 
 return AccSystem

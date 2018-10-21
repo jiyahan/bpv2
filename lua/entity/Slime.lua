@@ -7,7 +7,7 @@ function Slime:onInit()
     self:addComponent(AccSystem)
     self:addComponent(GameObject)
     self:addComponent(PhysicsMove)
-    self:addComponent(entityAI)
+    self:addComponent(SlimeAI)
     self:addComponent(PopHitEvent)
     self:addComponent(RenderHitting)
     self:addComponent(HitBack)
@@ -18,13 +18,12 @@ function Slime:onInit()
         name = "slime",
         hp = 10,
         maxHp = 10,
-        x = 300,
-        y = -10,
         w = 25,
         h = 25,
         maxVx = 150,
         friction = 50,
-        layerMask = layerMask.enemy,
+        color = { 1, 0.5, 0.5, 1 },
+        layerMask = layerMask.slime,
     })
 end
 

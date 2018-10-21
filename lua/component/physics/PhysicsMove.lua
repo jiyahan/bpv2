@@ -157,17 +157,8 @@ function PhysicsMove:onEnable()
             entity.axMap.fraction = nil
         end
 
-        local s1 = "jumpEngergy:" .. entity.jumpEnergy
-        local s2 = "jumpTime:" .. entity.jumpTime
-        local s3 = "CmdY:" .. y
-        local s4 = "axis1:" .. entity.ayMap.axis1
-        local s5 = "vy:" .. entity.vy
-        local s6 = string.format("released:%s", entity.released)
-        local s7 = string.format("isGrounded:%s", entity.isGrounded)
-        local s8 = string.format("vx:%s", entity.vx)
-        local s9 = string.format("axMap.fraction:%s", entity.axMap.fraction)
-        debug.physicsMove = string.format("physicsMove:\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",
-            s7, s3, s1, s2, s4, s5, s8, s6, s9)
+        --  for infomation display use only
+        entity.realVx, entity.realVy = entity.vx, entity.vy
     end)
 end
 
