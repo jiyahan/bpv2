@@ -1,7 +1,7 @@
 local heroMgr = {}
 
-function heroMgr:init()
-    self.hero = Hero:new()
+function heroMgr:set(hero)
+    self.hero = hero
 end
 
 function heroMgr:get()

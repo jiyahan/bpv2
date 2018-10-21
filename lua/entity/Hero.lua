@@ -25,7 +25,10 @@ function Hero:onInit()
         maxJumpTime = 3,
         bulletColor = { 0, 0.5, 0.6, 1 },
         bulletLayer = layerMask.playerBullet,
+        axMap = {},
+        ayMap = {},
     })
+    heroMgr:set(self)
 end
 
 return Hero

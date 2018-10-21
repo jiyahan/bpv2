@@ -12,13 +12,7 @@ function RuntimeTest:onEnable()
 end
 
 function RuntimeTest:f5()
---    local hero = heroMgr:get()
---    hero:setData({ x = 100, y = 50 })
---    hero:show()
---    utils.printt(hero)
-
     ui.panelDashBoard:removeComponent(PhysicsInfo)
---    ui.panelDashBoard:addComponent(PhysicsInfo)
 end
 
 return RuntimeTest

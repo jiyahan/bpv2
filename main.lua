@@ -2,7 +2,6 @@ function love.load()
     love.graphics.setDefaultFilter('nearest')
     love.graphics.setLineStyle("rough")
     require "autoScript.autoRequires"
-    heroMgr:init()
 
     ui={}
     ui.panelDashBoard = PanelDashBoard:new()

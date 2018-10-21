@@ -13,7 +13,7 @@ function sceneMgr:goto(mapPath)
             if v == "1" then
                 entity = Brick:new({ x = x, y = y })
             elseif v == "hero" then
-                entity = heroMgr:get()
+                entity = Hero:new()
                 entity:setData({
                     x = x,
                     y = y,
@@ -49,9 +49,6 @@ function sceneMgr:clear()
         end
         self.entityList = nil
     end
-
-    --    local hero = heroMgr:get()
-    --    hero:hide()
 end
 
 return sceneMgr
