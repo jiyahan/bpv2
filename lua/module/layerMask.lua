@@ -65,7 +65,7 @@ layerMask.slime.dmg = bitOrLayer(player)
 layerMask.playerBullet = {}
 layerMask.playerBullet.tag = getLayerTag(playerBullet)
 layerMask.playerBullet.col = bitOrLayer(brick)
-layerMask.playerBullet.dmg = bitOrLayer(zombie)
+layerMask.playerBullet.dmg = bitOrLayer(zombie, slime)
 
 layerMask.enemyBullet = {}
 layerMask.enemyBullet.tag = getLayerTag(enemyBullet)

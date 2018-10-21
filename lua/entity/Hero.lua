@@ -2,6 +2,7 @@ local Hero = Entity:extends()
 
 function Hero:onInit()
     self:addComponent(RenderRect)
+    self:addComponent(RenderAnim)
     self:addComponent(GameObject)
     self:addComponent(PlayerCmd)
     self:addComponent(PhysicsMove)
@@ -18,7 +19,7 @@ function Hero:onInit()
         name = 'hero',
         hp = 5,
         w = 20,
-        h = 20,
+        h = 50,
         maxVx = 100,
         friction = 15,
         layerMask = layerMask.player,
