@@ -4,7 +4,7 @@ local attackDisX = 30
 local attackDisY = 10
 local findTargetPeriod = 1
 local checkAttackRangePeriod = 0.06
-local jumpPeriod = 1.5
+local jumpPeriod = 4
 local attackCd = 1
 
 local ZombieAI = Component:extends()

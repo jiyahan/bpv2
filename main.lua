@@ -3,12 +3,11 @@ function love.load()
     love.graphics.setLineStyle("rough")
     require "autoScript.autoRequires"
 
-    ui={}
+    ui = {}
     ui.panelDashBoard = PanelDashBoard:new()
     ui.panelPauseMenu = PanelPauseMenu:new()
     ui.panelStartMenu = PanelStartMenu:new()
     ui.panelStartMenu:show()
-
 end
 
 function love.draw()

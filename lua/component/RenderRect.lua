@@ -3,7 +3,8 @@ local defaultColor = { 1, 1, 1, 1 }
 function RenderRect:onPopEvent(type)
     if type == "cameraDraw" then
         local entity = self.entity
-        local x, y, w, h = entity.x or 10, entity.y or 10, entity.w or 10, entity.h or 10
+--        local x, y, w, h = entity.x or 10, entity.y or 10, entity.w or 10, entity.h or 10
+        local x, y, w, h = entity.x , entity.y , entity.w , entity.h
         local dir = entity.dir
         local oldColor = utils.getColor()
         utils.setColor(entity.color or defaultColor)

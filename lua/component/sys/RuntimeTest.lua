@@ -12,7 +12,10 @@ function RuntimeTest:onEnable()
 end
 
 function RuntimeTest:f5()
-    ui.panelDashBoard:removeComponent(PhysicsInfo)
+    local hero = heroMgr:get()
+local ra = hero:getComponent(RenderAnim)
+    print(ra.img:getDimensions())
+--    utils.printt(ra.img)
 end
 
 return RuntimeTest

@@ -7,9 +7,9 @@ function MenuBar:onEnable()
     self:reg(event.onDrawUi, function()
         self.img = self.img or love.graphics.newImage(arrowImgPath)
         if parent.index == entity.index then
-            love.graphics.draw(self.img, entity.x, entity.y, 0, 2, 2, 22, 0)
+            love.graphics.draw(self.img, entity.x, entity.y, 0, 1, 1, 22, 0)
         end
-        love.graphics.print(entity.text, entity.x, entity.y, 0, 2, 2)
+        love.graphics.print(entity.text, entity.x, entity.y, 0, 1, 1)
     end)
     self:reg(event.onKeyPressed, function(key)
         if (key == "return" or key == "space") and parent.index == entity.index then

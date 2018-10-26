@@ -2,7 +2,6 @@ local Hero = Entity:extends()
 
 function Hero:onInit()
     self:addComponent(RenderRect)
-    self:addComponent(RenderAnim)
     self:addComponent(GameObject)
     self:addComponent(PlayerCmd)
     self:addComponent(PhysicsMove)
@@ -15,10 +14,12 @@ function Hero:onInit()
     self:addComponent(NearAttack)
     self:addComponent(HitDamage)
     self:addComponent(DeadOnEvent)
+    self:addComponent(RenderAnim)
+
     self:setData({
         name = 'hero',
         hp = 5,
-        w = 20,
+        w = 22,
         h = 50,
         maxVx = 100,
         friction = 15,
@@ -28,6 +29,15 @@ function Hero:onInit()
         bulletLayer = layerMask.playerBullet,
         axMap = {},
         ayMap = {},
+        animcfg = {
+            imgPath = "img/idle.png",
+            width = 11,
+            height = 25,
+            space = 1,
+            cnt = 5,
+            fps = 5,
+            scale = 2,
+        },
     })
     heroMgr:set(self)
 end

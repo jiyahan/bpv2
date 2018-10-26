@@ -2,7 +2,7 @@ local HeroHp = Component:extends()
 local hpimgpath = "img/heart.png"
 local startX, startY = 10, 10
 local imgWidth = 13
-local scale = 2
+local scale = 1
 function HeroHp:onEnable()
     self.img = self.img or love.graphics.newImage(hpimgpath)
     self:reg(event.onDrawUi, function()
