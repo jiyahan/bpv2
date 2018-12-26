@@ -17,7 +17,7 @@ function PanelPauseMenu:onInit()
     self.bars[1].callback = nil
     self.bars[2].text = "Restart"
     self.bars[2].callback = function()
-        sceneMgr:goto("config/map1.csv")
+        sceneMgr:switchTo("config/map1.csv")
     end
     self.bars[3].text = "Quit"
     self.bars[3].callback = function()

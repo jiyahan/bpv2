@@ -1,5 +1,5 @@
 local RuntimeTest = Component:extends()
-local path = 'lua.component.Sys.RuntimeTest'
+local path = 'test'
 
 function RuntimeTest:onEnable()
     self:reg(event.onKeyPressed, function(key)
@@ -7,15 +7,16 @@ function RuntimeTest:onEnable()
             package.loaded[path] = nil
             local test = require(path)
             test.f5()
+        elseif key == "f6" then
+            package.loaded[path] = nil
+            local test = require(path)
+            test.f6()
+        elseif key == "f7" then
+            package.loaded[path] = nil
+            local test = require(path)
+            test.f7()
         end
     end)
-end
-
-function RuntimeTest:f5()
-    local hero = heroMgr:get()
-local ra = hero:getComponent(RenderAnim)
-    print(ra.img:getDimensions())
---    utils.printt(ra.img)
 end
 
 return RuntimeTest

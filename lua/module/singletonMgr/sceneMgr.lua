@@ -1,6 +1,6 @@
 local sceneMgr = {}
 
-function sceneMgr:goto(mapPath)
+function sceneMgr:switchTo(mapPath)
     self:clear()
     local j = 0
     for line in love.filesystem.lines(mapPath) do

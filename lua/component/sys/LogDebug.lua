@@ -9,8 +9,7 @@ function LogDebug:onEnable()
     end)
     self:reg(event.onDraw, function()
         if self.debug then
-            love.graphics.print(self.entity.physicsMove or "")
-            love.graphics.print(self.entity.followHeroCmd or "ffff", 330)
+            love.graphics.print(love.timer.getFPS(),200,50)
         end
     end)
 end

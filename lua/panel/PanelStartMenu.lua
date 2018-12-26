@@ -13,7 +13,7 @@ function PanelStartMenu:onInit()
     end
     self.bars[1].text = "Start"
     self.bars[1].callback = function()
-        sceneMgr:goto("config/map1.csv")
+        sceneMgr:switchTo("config/map1.csv")
         ui.panelDashBoard:show()
     end
     self.bars[2].text = "Quit"

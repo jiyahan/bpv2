@@ -1,6 +1,10 @@
-local system = Entity:new()
-system:addComponent(FullScreen)
-system:addComponent(RuntimeTest)
-system:addComponent(PauseGame)
-system:show()
+local system = {}
+function system.init()
+    local entity = Entity:new()
+    entity:addComponent(FullScreen)
+    entity:addComponent(RuntimeTest)
+    entity:addComponent(PauseGame)
+    entity:addComponent(LogDebug)
+    entity:show()
+end
 return system

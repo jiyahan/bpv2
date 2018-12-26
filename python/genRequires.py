@@ -36,6 +36,7 @@ if os.path.exists(filepath):
     file = open(filepath, "r")
     for line in file:
         oldFileList.append(line)
+else: print("no file", filepath)
 
 newFileList = []
 
