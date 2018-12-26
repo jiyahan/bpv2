@@ -8,12 +8,14 @@ function RenderRect:onPopEvent(type)
         local dir = entity.dir
         local oldColor = utils.getColor()
         utils.setColor(entity.color or defaultColor)
+        love.graphics.setLineWidth(3)
         love.graphics.rectangle("line", x, y, w, h)
         if dir == 1 then
             love.graphics.rectangle("line", x + w / 2, y, w / 2, h / 2)
         elseif dir == -1 then
             love.graphics.rectangle("line", x, y, w / 2, h / 2)
         end
+        love.graphics.setLineWidth(1)
         utils.setColor(oldColor)
     end
 end

@@ -119,4 +119,16 @@ function utils.startwith(ori, target)
     return start == 1
 end
 
+function utils.getCenter(entity)
+    utils.assetNotNil(entity.x, "x")
+    utils.assetNotNil(entity.y, "y")
+    utils.assetNotNil(entity.w, "w")
+    utils.assetNotNil(entity.h, "h")
+    return entity.x + entity.w / 2, entity.y + entity.h / 2
+end
+
+function utils.getTopLeft(centerX, centerY, w, h)
+    return centerX - w / 2, centerY - h / 2
+end
+
 return utils
