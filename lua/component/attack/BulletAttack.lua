@@ -8,8 +8,6 @@ function BulletAttack:onPopEvent(type, data)
         bulletEntity:addComponent(GameObject)
         bulletEntity:addComponent(RenderRect)
         bulletEntity:addComponent(TimeToLive)
-        bulletEntity:addComponent(AccSystem)
-        bulletEntity:addComponent(PhysicsMove)
         bulletEntity:addComponent(CmdMove)
         bulletEntity:addComponent(BulletAI)
         local bulletWidth = 20
@@ -28,7 +26,7 @@ function BulletAttack:onPopEvent(type, data)
             w = bulletWidth,
             h = 5,
             timeLife = 3,
-            v = 20,
+            v = 400,
             dir = dir,
             color = entity.bulletColor or defaultBulletColor,
             layerMask = entity.bulletLayer or defaultBulletLayer,
